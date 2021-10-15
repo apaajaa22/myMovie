@@ -1,18 +1,18 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import {useNavigation} from '@react-navigation/core';
+import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import {
   FlatList,
   Image,
   StyleSheet,
-  Text,
   TextInput,
   TouchableOpacity,
   View,
 } from 'react-native';
-import Header from '../../components/Header';
 import Icon from 'react-native-vector-icons/AntDesign';
+import Header from '../../components/Header';
 import ModalContent from '../../components/ModalContent';
-import {useNavigation} from '@react-navigation/core';
-import axios from 'axios';
 
 const Search = () => {
   const navigation = useNavigation();
@@ -79,7 +79,7 @@ const Search = () => {
             onChangeText={e => setSearch(e)}
           />
         </View>
-        <View style={{paddingHorizontal: 10, marginTop: 20}}>
+        <View style={styles.wrapperFlatlist}>
           <FlatList
             data={data?.results}
             renderItem={renderItem}
@@ -127,4 +127,5 @@ const styles = StyleSheet.create({
     margin: 5,
     borderRadius: 8,
   },
+  wrapperFlatlist: {paddingHorizontal: 10, marginTop: 20, flex: 1},
 });

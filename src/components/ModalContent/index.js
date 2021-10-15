@@ -42,7 +42,12 @@ const ModalContent = ({
               </TouchableOpacity>
             </View>
             <Text style={styles.textRelease}>Release {release}</Text>
-            <Text style={styles.textDesc}>{overview}</Text>
+            <Text
+              ellipsizeMode="tail"
+              numberOfLines={6}
+              style={styles.textDesc}>
+              {overview}
+            </Text>
           </View>
         </View>
         <View style={styles.wrapperActionDetail}>
