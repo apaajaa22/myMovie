@@ -9,16 +9,23 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Home from '../screens/Home';
 import Search from '../screens/Search';
 import UpComing from '../screens/UpComing';
+import TabBar from '../components/TabBar';
+import Detail from '../screens/Detail';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const MainApp = () => {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={({route, navigation}) => ({
+        headerShown: false,
+        gestureEnabled: true,
+        ...TransitionPresets.SlideFromRightIOS,
+      })}
+      tabBar={props => <TabBar {...props} />}>
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Search" component={Search} />
-      <Tab.Screen name="UpComing" component={UpComing} />
     </Tab.Navigator>
   );
 };
@@ -32,11 +39,12 @@ const Routes = () => {
           gestureEnabled: true,
           ...TransitionPresets.SlideFromRightIOS,
         })}
-        initialRouteName="Home">
+        initialRouteName="MainApp">
         <Stack.Screen name="Register" component={Register} />
         <Stack.Screen name="Register2" component={Register2} />
         <Stack.Screen name="Confirmation" component={Confirmation} />
         <Stack.Screen name="MainApp" component={MainApp} />
+        <Stack.Screen name="Detail" component={Detail} />
       </Stack.Navigator>
     </NavigationContainer>
   );

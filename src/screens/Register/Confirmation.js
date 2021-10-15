@@ -21,7 +21,7 @@ const Confirmation = ({navigation}) => {
       ToastAndroid.SHORT,
       ToastAndroid.TOP,
     );
-    navigation.replace('MainApp');
+    navigation.reset({index: 0, routes: [{name: 'MainApp'}]});
   };
   return (
     <View style={styles.container}>
