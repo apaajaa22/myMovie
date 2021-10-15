@@ -39,7 +39,7 @@ const Routes = () => {
           gestureEnabled: true,
           ...TransitionPresets.SlideFromRightIOS,
         })}
-        initialRouteName="MainApp">
+        initialRouteName="Register">
         <Stack.Screen name="Register" component={Register} />
         <Stack.Screen name="Register2" component={Register2} />
         <Stack.Screen name="Confirmation" component={Confirmation} />
