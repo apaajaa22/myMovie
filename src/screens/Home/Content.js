@@ -13,8 +13,10 @@ import axios from 'axios';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Feather from 'react-native-vector-icons/Feather';
 import ModalContent from '../../components/ModalContent';
+import {useNavigation} from '@react-navigation/core';
 
 const Content = () => {
+  const navigation = useNavigation();
   const [data, setData] = useState({});
   const [show, setShow] = useState(false);
   const getData = () => {
@@ -30,6 +32,12 @@ const Content = () => {
   useEffect(() => {
     getData();
   }, []);
+
+  const onDetail = () => {
+    setShow(false);
+    navigation.navigate('Detail', data);
+  };
+
   return (
     <>
       <View>
@@ -77,6 +85,7 @@ const Content = () => {
         onPressBackground={() => setShow(false)}
         onPressClose={() => setShow(false)}
         visible={show}
+        onPressDetail={onDetail}
       />
     </>
   );
