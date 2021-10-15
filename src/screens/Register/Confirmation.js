@@ -1,5 +1,5 @@
 import React from 'react';
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {ScrollView, StyleSheet, Text, ToastAndroid, View} from 'react-native';
 import {useEffect, useState} from 'react/cjs/react.development';
 import Button from '../../components/Button';
 import ItemData from '../../components/ItemData';
@@ -14,6 +14,15 @@ const Confirmation = ({navigation}) => {
     });
   }, []);
 
+  const onSubmit = () => {
+    removeValue('user');
+    ToastAndroid.showWithGravity(
+      'Data user removed',
+      ToastAndroid.SHORT,
+      ToastAndroid.TOP,
+    );
+    navigation.replace('MainApp');
+  };
   return (
     <View style={styles.container}>
       <Text style={styles.titlePage}>Confirmation data of entry</Text>
@@ -36,12 +45,7 @@ const Confirmation = ({navigation}) => {
       </ScrollView>
       <View style={styles.wrapperButton}>
         <Button title="Back" width="40%" onPress={() => navigation.goBack()} />
-        <Button
-          title="Submit"
-          primary
-          width="40%"
-          onPress={() => removeValue('user')}
-        />
+        <Button title="Submit" primary width="40%" onPress={onSubmit} />
       </View>
     </View>
   );
